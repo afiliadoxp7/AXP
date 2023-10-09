@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
+
+<head>
+<meta charset="UTF-8" />
+</head>
+
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+
+		<main role="main">
+
+			<div class="container col-md-8">
+				<div class="form">
+					<div class="form-header">
+						<h2 class="font-italic">Novo Fornecedor</h2>
+					</div>
+				</div>
+
+				<div th:replace="~{fragments/alert2}"></div>
+				<form th:action="@{/salvarFornecedor}" method="POST"
+					class="form-horizontal" th:object="${fornecedor}">
+					<input type="hidden" th:field="*{id}">
+
+					<div th:replace="~{fragments/validacao :: validacao}"></div>
+
+					<div class="card w-100">
+						<div class="card-header">
+
+							<div class="container">
+								<div class="row col-md-4">
+									<div class="input-box">
+										<label for="nome" class="input-box">Fornecedor</label>
+									</div>
+								</div>
+								<div>
+									<input type="text" th:field="*{nome}" class="form-control"
+										id="nome" placeholder="Nome do fornecedor">
+								</div>
+								<br>
+								<div class="row col-md-4">
+
+									<div class="input-box">
+										<label for="Link" class="input-box">Link</label>
+									</div>
+								</div>
+								<div>
+									<input type="text" th:field="*{Link}" class="form-control"
+										id="Link" placeholder="Nome da fornecedor">
+								</div>
+							</div>
+
+							<br>
+							<ul class="nav nav-pills card-header-pills">
+								<li class="nav-item">
+									<div class="col-md-2">
+										<button type="submit" class="btn btn-primary">
+											Cadastrar<i class=" col-md-2 fas fa-save"></i>
+										</button>
+									</div>
+								</li>
+
+								<li class="nav-item">
+									<div class="col-md-4">
+										<a th:href="@{/listarFornecedores}" class="btn btn-primary"
+											role="button" aria-pressed="true">Lista Fornecedor</a>
+									</div>
+								</li>
+							</ul>
+							<br>
+
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<script th:src="@{/js/fornecedor.js?(v=${version})}" th:fragment="js"></script>
+			<script th:inline="javascript" th:fragment="inlinescript"></script>
+		</main>
+	</section>
+
+</body>
+
+</html>

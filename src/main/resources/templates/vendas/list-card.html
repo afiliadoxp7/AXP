@@ -1,0 +1,64 @@
+<div class="col-md-3" th:each="prod : ${listaProdutos}">
+
+	<figure class="card card-product">
+		<div th:id="${prod.id}" class="card">
+			<!-- Imagem -->
+			<div class="img-wrap bg-light text-dark">
+
+				<div class="input-box">
+					<div class="card">
+						<div class="card_image">
+							<span class="note" th:text="${prod.categoria.nome}">Seasonal</span>
+							<img alt="Image" class="img_prod_maior"
+								th:src="|/imagem/${prod.id}|" /> <span class="card_price"
+								th:text="${prod.genero.nome}"><span>$</span>16</span>
+						</div>
+					</div>
+				</div>
+				<div class="input-box" style="font-weight: 600">
+					<label class="title text-dots text-secondary ml-1"
+						style="text-align: center" th:text="${prod.nome}"></label>
+					<hr>
+					<p style="text-align: center">
+						Produto Com <span th:text="| ${prod.valor.nome}% |"></span> OFF Ou
+						Em <span
+							th:text="| ${prod.parcela.nome}x De 
+					R$:${#numbers.formatDecimal(prod.precoParcela, 1, 2, 'COMMA')} |"></span>
+						Ou Avista <span
+							th:text="| R$:${#numbers.formatDecimal(prod.preco, 1, 2, 'COMMA')}.|"></span>
+					</p>
+					<p style="text-align: center">
+						Toda Descrição Do <span th:text="| ${prod.categoria.nome} |"></span>Em
+						SAIBA MAIS.
+					</p>
+
+				</div>
+				<hr>
+
+			</div>
+			<!-- Imagem -->
+
+
+			<figcaption class="info-wrap">
+
+				<div class="action-wrap">
+
+					<div class="price-wrap h4">
+						<span class="price-new badge badge-pill badge-danger ml-1"><span
+							th:text="| R$:${#numbers.formatDecimal(prod.preco, 1, 2, 'COMMA')}|"></span></span>
+						<a th:href="${prod.link}"
+							class="btn btn-success btn-sm float-right" target="_blank"
+							rel="noopener noreferrer">SAIBA MAIS</a>
+					</div>
+
+
+
+					<!-- price-wrap.// -->
+				</div>
+				<!-- action-wrap -->
+			</figcaption>
+		</div>
+	</figure>
+	<!-- card // -->
+</div>
+

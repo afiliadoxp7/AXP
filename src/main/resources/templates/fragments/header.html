@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
+
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+	<nav th:fragment="nav-sidebar">
+		<header th:fragment="cabecalho">
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+				<!-- A barra Home -->
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand " th:href="@{/exibirProdutosVenda}"> <img
+							class="afiliado" th:src="@{'/image/afiliado1.png'}"
+							sec:authorize="!isAuthenticated()" />
+						</a>
+
+					</div>
+
+
+					<div class="collapse navbar-collapse" id="navbarCollapse">
+						<ul class="navbar-nav mr-auto">
+							<!-- Cadastro do Adiministrador -->
+							<li class="nav-item dropdown"
+								sec:authorize="hasAuthority('ADMIN')"><a
+								class="btn btn-dark dropdown-toggle" href="#" id="dropdown01"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Administrador</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown01">
+									<a class="dropdown-item" th:href="@{/especialidades}"><i
+										class="bi bi-award"></i> Especialidades</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/u/novo/cadastro/usuario}"><i
+										class="oi oi-plus"></i> Cadastro de Usuários</a> <a
+										class="dropdown-item" th:href="@{/u/lista}"><i
+										class="oi oi-spreadsheet"></i> Lista de Usuários</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/exibirFormPrivacidade}">
+										<i class="oi oi-plus"> </i> Cadastrar Privacidade
+									</a> <a class="dropdown-item" th:href="@{/listarPrivacidades}">
+										<i class="oi oi-spreadsheet"></i> Listar Privacidade
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/}"><i
+										class="bi bi-card-list"></i> Histórico de Produtos</a>
+								</div></li>
+							<!-- Cadastro de Afiliados -->
+							<li class="nav-item dropdown"
+								sec:authorize="hasAuthority('AFILIADO')"><a
+								class="btn btn-dark dropdown-toggle" href="#" id="dropdown02"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Afiliado</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown02">
+									<!-- a class="dropdown-item" th:href="@{/afiliados/dados}"> <i
+										class="oi oi-spreadsheet"></i> Dados Cadastrais
+									</a-->
+									<a class="dropdown-item" th:href="@{/u/editar/senha}"> <i
+										class="bi bi-lock-fill"></i> Editar Senha
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/}"><i
+										class="bi bi-card-list"></i> Histórico de Produtos</a>
+								</div></li>
+
+							<!-- __________________________________________________________________________________________________ -->
+							<!-- Categoria, Genero, Fornecedor -->
+
+
+							<li class="nav-item dropdown"
+								sec:authorize="hasAuthority('AFILIADO')"><a
+								class="btn btn-dark dropdown-toggle" href="#" id="dropdown03"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Cadastrar</a>
+
+								<div class="dropdown-menu" aria-labelledby="dropdown03">
+									<a class="dropdown-item" th:href="@{/exibirFormCategoria}">
+										<i class="oi oi-plus"> </i> Categoria
+									</a> <a class="dropdown-item" th:href="@{/listarCategorias}"> <i
+										class="oi oi-spreadsheet"> </i> Listar Categoria
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/exibirFormGenero}"> <i
+										class="oi oi-plus"> </i> Genero
+									</a> <a class="dropdown-item" th:href="@{/listarGeneros}"> <i
+										class="bi bi-puzzle"> </i> Listar Genero
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/exibirFormFornecedor}">
+										<i class="oi oi-plus"> </i> Fornecadores
+									</a><a class="dropdown-item" th:href="@{/listarFornecedores}">
+										<i class="bi bi-person-lines-fill"> </i> Listar Fornecadores
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/}"><i
+										class="bi bi-card-list"></i> Histórico de Produtos</a>
+								</div></li>
+							<!-- __________________________________________________________________________________________________ -->
+							<!-- Valor -->
+							<li class="nav-item dropdown"
+								sec:authorize="hasAuthority('AFILIADO')"><a
+								class="btn btn-dark dropdown-toggle" href="#" id="dropdown03"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Valor</a>
+
+								<div class="dropdown-menu" aria-labelledby="dropdown03">
+									<a class="dropdown-item" th:href="@{/exibirFormValor}"> <i
+										class="oi oi-plus"> </i> Porcentagem
+									</a> <a class="dropdown-item" th:href="@{/listarValores}"> <i
+										class="bi bi-percent"></i> Porcentagem
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/exibirFormParcela}"> <i
+										class="oi oi-plus"> </i> Parcela
+									</a> <a class="dropdown-item" th:href="@{/listarParcelas}"> <i
+										class="bi bi-stack"></i> Parcela
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/}"><i
+										class="bi bi-card-list"></i> Histórico de Produtos</a>
+								</div></li>
+							<!-- __________________________________________________________________________________________________ -->
+							<!-- Produto -->
+							<li class="nav-item dropdown"
+								sec:authorize="hasAuthority('AFILIADO')"><a
+								class="btn btn-dark dropdown-toggle" href="#" id="dropdown03"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">Artefato</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown03">
+									<a class="dropdown-item" th:href="@{/exibirFormProduto}"> <i
+										class="oi oi-plus"> </i> Produtos
+									</a> <a class="dropdown-item" th:href="@{/listarProdutos}"> <i
+										class="oi oi-spreadsheet"></i> Listar de produtos
+									</a> <a class="dropdown-item"
+										th:href="@{/listarProdutosFornecedores}"> <i
+										class="bi bi-person-lines-fill"></i> Listar Fornecedor
+									</a> <a class="dropdown-item" th:href="@{/listarProdutosValores}">
+										<i class="bi bi-currency-dollar"></i> Listar Valor
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" th:href="@{/}"><i
+										class="bi bi-card-list"></i> Histórico de Produtos</a>
+								</div></li>
+						</ul>
+					</div>
+					<!-- Abrindo a pagina de login -->
+					<form class="form-inline mt-2 mt-md-0"
+						sec:authorize="!isAuthenticated()">
+						<div class="form-check mb-2 mr-sm-2">
+							<a class="btn btn-outline-warning my-2 my-sm-0" role="button"
+								th:href="@{/login}">Login</a>
+						</div>
+						
+					</form>
+					<!-- Abrindo a pagina de Sait * logout * -->
+					<form th:action="@{/logout}" sec:authorize="isAuthenticated()"
+						method="post" class="form-inline mt-2 mt-md-0">
+						<div>
+							<header>
+								<nav class="navbar navbar-expand-lg"
+									sec:authorize="hasAuthority('AFILIADO')">
+
+									<!-- __________________________________________________________________________________________________ -->
+									<!-- Cadastro Icons -->
+									<div>
+										<ul>
+											<li class="nav-item dropdown"
+												sec:authorize="hasAuthority('AFILIADO')"><a
+												class="btn btn-dark dropdown-toggle" href="#"
+												id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false"> <i class="bi bi-list-ul"></i>
+											</a>
+												<div class="dropdown-menu" aria-labelledby="dropdown03">
+													<a class="dropdown-item" th:href="@{/exibirFormProduto}">
+														<i class="bi bi-boxes"> </i> Produto
+													</a>
+													<div class="dropdown-divider"></div>
+													<a class="dropdown-item" th:href="@{/exibirFormCategoria}">
+														<i class="bi bi-bezier2"> </i> Categoria
+													</a> <a class="dropdown-item" th:href="@{/exibirFormGenero}">
+														<i class="bi bi-hypnotize"> </i> Genero
+													</a> <a class="dropdown-item"
+														th:href="@{/exibirFormFornecedor}"> <i
+														class="bi bi-diagram-3-fill"> </i> Fornecador
+													</a>
+													<div class="dropdown-divider"></div>
+													<a class="dropdown-item" th:href="@{/exibirFormValor}">
+														<i class="bi bi-percent"> </i> Porcentagem
+													</a> <a class="dropdown-item" th:href="@{/exibirFormParcela}">
+														<i class="bi bi-repeat"> </i> Parcela
+													</a>
+													<div class="dropdown-divider"></div>
+													<a class="dropdown-item" th:href="@{/}"><i
+														class="bi bi-card-list"></i> Histórico de Produtos</a>
+												</div></li>
+										</ul>
+									</div>
+								</nav>
+							</header>
+						</div>
+						<div class="btn-group mb-2 mr-sm-2">
+							<button type="button" class="btn btn-light">
+								<i class="bi bi-person-fill-check"></i> <span class=""
+									sec:authentication="">USER</span>
+							</button>
+							<button type="button"
+								class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"></button>
+							<div class="dropdown-menu">
+								<button type="submit" class="dropdown-item">Sair</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</nav>
+		</header>
+	</nav>
+</body>
+</html>

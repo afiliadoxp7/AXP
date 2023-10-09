@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.w3.org/1999/xhtml" layout:decorate="~{layout}">
+
+<head>
+<meta charset="UTF-8" />
+</head>
+
+<body>
+
+	<section class="layout-content" layout:fragment="corpo">
+
+		<main role="main">
+			<div class="contatiner_tabela">
+				<div class="form"><br>
+					<div class="form-header">
+						<h2 class="font-italic">Lista de Privacidade</h2>
+					</div>
+				</div>
+				<div th:replace="~{fragments/alert2  :: alerta-sucesso}"></div>
+
+				<table class="table table-striped table-bordered table-sm">
+					<thead class="table-dark">
+						<tr>
+							<th>Privacidade</th>
+							<th>Editar</th>
+							<th>Excluir</th>
+						</tr>
+					</thead>
+					<tr th:each="privac : ${lista}">
+
+						<td th:text="${privac.nome}"></td>
+						<!-- Ação de editar e remover -->
+						<td><a th:href="@{/editarPrivacidade(id=${privac.id})}"
+							data-toggle="modal" data-target="#myModal"> <img class="gifs"
+								th:src="@{'/image/editar.ico'}" alt="gif" />
+						</a></td>
+
+						<td><a th:href="@{/removerPrivacidade(id=${privac.id})}">
+
+								<img class="gifs" th:src="@{'/image/excluir.ico'}" alt="gif" />
+						</a></td>
+					</tr>
+				</table>
+				<hr />
+				<a href="/exibirFormPrivacidade" class="btn btn-primary"
+					role="button" aria-pressed="true">Nova Privacidade</a>
+
+			</div>
+
+			<div th:replace="~{fragments/modal :: modal}"></div>
+
+			<script th:src="@{/js/privacidade.js?(v=${version})}"
+				th:fragment="js"></script>
+			<script th:inline="javascript" th:fragment="inlinescript"></script>
+		</main>
+	</section>
+
+</body>
+
+</html>
