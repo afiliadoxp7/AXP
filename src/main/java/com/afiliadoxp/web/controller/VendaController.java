@@ -33,7 +33,7 @@ public class VendaController {
 	public String listarCards(@RequestParam(name = "page", defaultValue = "1") int page, 
 								Model model) {
 		Sort sort = Sort.by(Sort.Direction.ASC, "nome");
-		PageRequest pageRequest = PageRequest.of(page, 8, sort);// Quantidades de cards a mostrar na pagina
+		PageRequest pageRequest = PageRequest.of(page, 1000, sort);// Quantidades de cards a mostrar na pagina
 		
 		model.addAttribute("listaProdutos", this.produtoRepository.findAll(pageRequest));
 		
@@ -46,7 +46,7 @@ public class VendaController {
 	@GetMapping("/ProdutosVenda")
 	public String Produtos(Model model) {
 		Sort sort = Sort.by(Sort.Direction.ASC, "nome");
-		PageRequest page = PageRequest.of(0, 8, sort);// Quantidades de cards a mostrar na pagina
+		PageRequest page = PageRequest.of(0, 1000, sort);// Quantidades de cards a mostrar na pagina
 		model.addAttribute("listaProdutos", this.produtoRepository.findAll(page));
 		return "vendas/produto-search";
 	}
